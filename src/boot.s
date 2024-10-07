@@ -16,12 +16,12 @@ _start:
 	mov	sp, x0
 
 	// Set up memory attrs
-	;; ldr     x0, =0xEE000000000000FF    // Set all memory regions to Normal, Outer Write-Back, Inner Write-Back
-	;; msr     mair_el1, x0
-	;; ldr     x0, =0x0000000000001C5E    // Set up translation control (4K granule, 48-bit VA)
-	;; msr     tcr_el1, x0
-	;; ldr     x0, =0x0000000000000C00    // Enable caches and MMU
-	;; msr     sctlr_el1, x0
+	ldr     x0, =0xEE000000000000FF    // Set all memory regions to Normal, Outer Write-Back, Inner Write-Back
+	msr     mair_el1, x0
+	ldr     x0, =0x0000000000001C5E    // Set up translation control (4K granule, 48-bit VA)
+	msr     tcr_el1, x0
+	ldr     x0, =0x0000000000000C00    // Enable caches and MMU
+	msr     sctlr_el1, x0
 
 	// Enable FPU
 	mov	x0, #(3 << 20)
