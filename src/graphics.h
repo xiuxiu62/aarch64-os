@@ -17,5 +17,6 @@ volatile u32* framebuffer;
 
 static void init_framebuffer() {
   framebuffer = (volatile u32*)0x30000000;
+  *(volatile u32*)CLCD_TIM0
 }
 
