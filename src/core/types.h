@@ -1,5 +1,4 @@
-#ifndef TYPES_H
-#define TYPES_H
+#pragma once
 
 typedef char i8;
 typedef short i16;
@@ -15,5 +14,3 @@ typedef unsigned long long usize;
 
 typedef float f32;
 typedef double f64;
-
-#endif // TYPES_H

@@ -1,5 +1,5 @@
+#include "core/fmt.h"
 #include "serial.h"
-// #include "core/fmt.h"
 
 void kernel_halt();
 
@@ -11,7 +11,7 @@ void kernel_main() {
   // char buf[16];
   // u32_fmt(125, buf, 10);
   // serial_puts(buf);
-  /* u32 u32_fmt(i32 num, char* str, u32 base); */
+  // u32 u32_fmt(i32 num, char *str, u32 base);
 
   serial_puts("hey sailor");
   serial_puts("☠️");

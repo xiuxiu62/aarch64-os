@@ -35,7 +35,7 @@ add_custom_command(
 
 # Custom target to run QEMU
 add_custom_target(run
-    COMMAND qemu-system-aarch64 -M virt -cpu cortex-a53 -nographic -kernel kernel.bin
+    COMMAND qemu-system-aarch64 -M virt -cpu cortex-a53 -m 128M -kernel kernel.bin -nographic -chardev stdio,id=char0,mux=on -mon chardev=char0,mode=readline -serial chardev:char0 -d guest_errors,unimp,cpu_reset -D qemu.log
     DEPENDS kernel.elf
     COMMENT "Booting OS"
 )
