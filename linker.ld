@@ -8,6 +8,8 @@ MEMORY
 SECTIONS
 {
     . = ORIGIN(RAM);
+
+    __kernel_start = .;
     
     .text.boot :
     {
@@ -39,9 +41,17 @@ SECTIONS
     . = ALIGN(16);
     __bss_end = .;
 
-    . = ALIGN(16);   
-    . += 0x10000; /* 1MiB of stack space */
+    __kernel_end = .;  
+
+    . = ALIGN(4096); 
+    __stack_bottom = .;
+    . += 8M; /* 8MiB of stack space */
     __stack_top = .;
+
+    . = ALIGN(4096);   
+    __heap_start = .;
+    . += 32M; /* 32MiB of stack space */
+    __heap_end = .;
 
     /DISCARD/ :
     {
@@ -52,4 +62,6 @@ SECTIONS
     }
 }
 
-__bss_size = __bss_end - __bss_start;
+__bss_size   = __bss_end - __bss_start;
+__stack_size = __stack_top - __stack_bottom;
+__heap_size  = __heap_end - __heap_start;

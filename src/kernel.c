@@ -1,5 +1,6 @@
 #include "core/fmt.h"
 #include "serial.h"
+#include "core/alloc.h"
 
 void kernel_halt();
 
@@ -13,7 +14,14 @@ void kernel_main() {
   // serial_puts(buf);
   // u32 u32_fmt(i32 num, char *str, u32 base);
 
-  serial_puts("hey sailor");
+  char* temp = (char*)alloc(16);
+  char* temp2 = (char*)alloc(16);
+  temp  = "hey sailor!";
+  temp2 = "hey sailor?";
+  serial_puts(temp);
+  serial_puts(temp2);
+
+  /* serial_puts("hey sailor"); */
   serial_puts("☠️");
   serial_puts("hey sailor");
 

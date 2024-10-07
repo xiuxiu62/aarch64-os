@@ -8,3 +8,14 @@
 #define CLCD_TIM3       (PL111_CLCD_BASE + 0x00C) 
 #define CLCD_UBAS       (PL111_CLCD_BASE + 0x010) 
 #define CLCD_CTRL       (PL111_CLCD_BASE + 0x018) 
+
+#define SCREEN_WIDTH  1024
+#define SCREEN_HEIGHT 768
+#define SCREEN_DEPTH  32
+
+volatile u32* framebuffer;
+
+static void init_framebuffer() {
+  framebuffer = (volatile u32*)0x30000000;
+}
+
