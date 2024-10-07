@@ -11,9 +11,9 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 TOOLS_DIR = os.path.join(SCRIPT_DIR, "..", "tools")
 SRC_DIR   = os.path.join(SCRIPT_DIR, "..", "src")
 BUILD_DIR = os.path.join(SCRIPT_DIR, "..", "build")
-COMPILER  = os.path.join(TOOLS_DIR, "bin", "aarch64-none-elf-gcc-13.3.1.exe")
-ASSEMBLER = os.path.join(TOOLS_DIR, "bin", "aarch64-none-elf-as.exe")
-OBJCOPY   = os.path.join(TOOLS_DIR, "bin", "aarch64-none-elf-objcopy.exe")
+COMPILER  = os.path.join(TOOLS_DIR, "bin", "aarch64-none-elf-gcc-13.3.1")
+ASSEMBLER = os.path.join(TOOLS_DIR, "bin", "aarch64-none-elf-as")
+OBJCOPY   = os.path.join(TOOLS_DIR, "bin", "aarch64-none-elf-objcopy")
 LINKER_SCRIPT = os.path.join(SCRIPT_DIR, "..", "linker.ld")
 
 GCC_VERSION = "13.3.1"
