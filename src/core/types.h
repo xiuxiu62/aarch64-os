@@ -14,3 +14,11 @@ typedef unsigned long long usize;
 
 typedef float f32;
 typedef double f64;
+
+typedef u8 bool;
+
+#define false 0
+#define true 1
+
+#define nullptr ((void*)0)
+

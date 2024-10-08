@@ -2,8 +2,6 @@
 
 #include "types.h"
 
-#define nullptr ((void*)0);
-
 extern u8 __heap_start[];
 extern u8 __heap_end[];
 
