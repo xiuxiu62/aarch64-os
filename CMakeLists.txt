@@ -3,6 +3,7 @@ project(os C ASM)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(TARGET_ARCH "aarch64-none-elf")
 
@@ -18,9 +19,9 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -T ${CMAKE_SOURCE_DIR}/lin
 
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
-file(GLOB C_SOURCES   "src/*.c")
-file(GLOB C_HEADERS   "src/*.h")
-file(GLOB ASM_SOURCES "src/*.s")
+file(GLOB_RECURSE C_SOURCES   "src/*.c")
+file(GLOB_RECURSE C_HEADERS   "src/*.h")
+file(GLOB_RECURSE ASM_SOURCES "src/*.s")
 
 add_executable(kernel.elf ${C_SOURCES} ${C_HEADERS} ${ASM_SOURCES})
 

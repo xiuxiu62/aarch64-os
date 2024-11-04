@@ -1,20 +1,21 @@
 #pragma once
 
-#include "types.h"
+#include "core/types.h"
 
-extern u8 __heap_start[];
-extern u8 __heap_end[];
+typedef struct Block {
+  usize size;         // Size of the block including header
+  struct Block *next; // Next free block in the list
+  bool is_free;       // Whether this block is free
+} Block;
 
-static u8* heap_ptr = (u8*)__heap_start;
+typedef struct {
+  Block *free_list;
+} Allocator;
 
-void* alloc(usize size) {
-  size = (size + 7) & -7;
+void allocator_init(Allocator *allocator);
 
-  if (heap_ptr + size > (u8*)__heap_end)
-    return nullptr;
+void global_allocator_init();
 
-  void* region = (void*)heap_ptr;
-  heap_ptr += size;
+void *alloc(usize requested_size);
 
-  return region;
-}
+void free(void *ptr);
