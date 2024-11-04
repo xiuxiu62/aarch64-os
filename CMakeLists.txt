@@ -17,15 +17,21 @@ set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} --target=${TARGET_ARCH} -mcpu=cortex-a53
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -T ${CMAKE_SOURCE_DIR}/linker.ld -nostdlib")
 
-include_directories(${CMAKE_SOURCE_DIR}/src)
+include_directories(
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/boot
+    ${CMAKE_SOURCE_DIR}/src/kernel
+)
 
-file(GLOB_RECURSE C_SOURCES   "src/*.c")
-file(GLOB_RECURSE C_HEADERS   "src/*.h")
 file(GLOB_RECURSE ASM_SOURCES "src/*.s")
+file(GLOB_RECURSE C_SOURCES "src/*.c")
+file(GLOB_RECURSE HEADERS "src/*.h")
 
 add_executable(kernel.elf ${C_SOURCES} ${C_HEADERS} ${ASM_SOURCES})
 
-set_target_properties(kernel.elf PROPERTIES LINK_DEPENDS ${CMAKE_SOURCE_DIR}/linker.ld)
+set_target_properties(kernel.elf PROPERTIES 
+    LINK_DEPENDS ${CMAKE_SOURCE_DIR}/linker.ld
+)
 
 add_custom_command(
     TARGET kernel.elf
